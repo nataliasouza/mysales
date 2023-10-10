@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using mysalles.Models;
 
 namespace mysalles.Data
 {
@@ -9,6 +10,8 @@ namespace mysalles.Data
         {
         }
 
-        public DbSet<mysalles.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Seller> Seller {  get; set; }
+        public DbSet<SalesRecord> SalesRecord { get; set; }
     }
 }
