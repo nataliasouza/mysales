@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
+using Microsoft.Extensions.Options;
 
 namespace mysalles
 {
@@ -23,7 +24,15 @@ namespace mysalles
             services.AddControllersWithViews();
 
             services.AddDbContext<mysallesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("mysallesContext")));
+            options.UseSqlServer(Configuration.GetConnectionString("mysallesContext")));
+
+            //services.AddDbContext<mysallesContext>(options =>
+            //        options.UseMySql(Configuration.GetConnectionString("mysallesContext"),
+            //        ServerVersion.AutoDetect("mysalles")));
+
+            //services.AddDbContext<mysallesContext>(options =>
+            //        options.UseMySql(Configuration.GetConnectionString("mysallesContext"), builder =>
+            //        builder.MigrationsAssembly("mysalles")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
