@@ -9,9 +9,9 @@ namespace mysalles.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private readonly mysallesContext _context;
+        private readonly MySallesContext _context;
 
-        public DepartmentsController(mysallesContext context)
+        public DepartmentsController(MySallesContext context)
         {
             _context = context;
         }

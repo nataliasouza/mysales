@@ -3,9 +3,9 @@ using mysalles.Models;
 
 namespace mysalles.Data
 {
-    public class mysallesContext : DbContext
+    public class MySallesContext : DbContext
     {
-        public mysallesContext (DbContextOptions<mysallesContext> options)
+        public MySallesContext (DbContextOptions<MySallesContext> options)
             : base(options)
         {
         }
