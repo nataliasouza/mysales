@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
+using mysalles.Services;
 
 namespace mysalles
 {
@@ -23,7 +24,9 @@ namespace mysalles
             services.AddControllersWithViews();
 
             services.AddDbContext<MySallesContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MySallesContext")));            
+            options.UseSqlServer(Configuration.GetConnectionString("MySallesContext")));
+
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

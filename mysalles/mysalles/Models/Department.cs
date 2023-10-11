@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace mysalles.Models
@@ -7,6 +8,7 @@ namespace mysalles.Models
     public class Department
     {
         public int Id { get; set; }
+        [DisplayName("Nome")]
         public string Name { get; set; }
         public ICollection<Seller> Sellers { get; set; }  = new List<Seller>();        
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace mysalles.Models
@@ -7,10 +8,15 @@ namespace mysalles.Models
     public class Seller
     {
         public int Id { get; set; }
+        [DisplayName("Nome")]
         public string Name { get; set; }
+        [DisplayName("E-mail")]
         public string Email { get; set; }
+        [DisplayName("Data de Nascimento")]
         public DateTime BirthDate { get; set; }
+        [DisplayName("Salário Base")]
         public double BaseSalary { get; set; }
+        [DisplayName("Departamento")]
         public Department Department { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
