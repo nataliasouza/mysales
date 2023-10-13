@@ -2,6 +2,8 @@
 using mysalles.Models;
 using mysalles.Models.ViewModels;
 using mysalles.Services;
+using mysalles.Services.Exceptions;
+using System.Collections.Generic;
 
 namespace mysalles.Controllers
 {
@@ -28,6 +30,54 @@ namespace mysalles.Controllers
             var departments = _departmentService.FindAllDepartments();
             var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindByIdSeller(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+
+            List<Department> departments = _departmentService.FindAllDepartments();
+            SellerFormViewModel viewModel = new SellerFormViewModel 
+            { 
+                Seller = obj, 
+                Departments = departments
+            };                    
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if(id != seller.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _sellerService.UpdateSeller(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch(DbConcurrencyException ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         [HttpPost]

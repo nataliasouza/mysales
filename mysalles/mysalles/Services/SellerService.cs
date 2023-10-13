@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Models;
+using mysalles.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +31,23 @@ namespace mysalles.Services
         public Seller FindByIdSeller(int id)
         {
             return _context.Seller.Include(obj => obj.Department).FirstOrDefault(seller => seller.Id == id);
+        }
+
+        public void UpdateSeller(Seller seller)
+        {
+            if (!_context.Seller.Any(x => x.Id == seller.Id))
+            {
+                throw new NotFoundException("Id not found");
+            }
+            try
+            {
+                _context.Update(seller);
+                _context.SaveChanges();
+            }
+            catch (DbConcurrencyException ex)
+            {
+                throw new DbConcurrencyException(ex.Message);
+            }
         }
 
         public void RemoveSeller(int id)
