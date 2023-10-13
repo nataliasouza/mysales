@@ -18,6 +18,7 @@ namespace mysalles.Models
         public double BaseSalary { get; set; }
         [DisplayName("Departamento")]
         public Department Department { get; set; }
+        [DisplayName("Id do Departamento")]
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
