@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Models;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace mysalles.Services
 
         public Seller FindByIdSeller(int id)
         {
-            return _context.Seller.FirstOrDefault(seller => seller.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(seller => seller.Id == id);
         }
 
         public void RemoveSeller(int id)
