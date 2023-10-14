@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace mysalles.Models
@@ -8,14 +9,27 @@ namespace mysalles.Models
     public class Seller
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Informe o seu nome")]
+        [StringLength(80, ErrorMessage = "O nome deve conter entre 3 e 80 caracteres", MinimumLength = 3)]
         [DisplayName("Nome")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Informe o seu email")]
+        [EmailAddress(ErrorMessage = "Informe um email válido.")]
         [DisplayName("E-mail")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
         [DisplayName("Data de Nascimento")]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+
+        [DisplayFormat(DataFormatString ="{0:F2}")]
         [DisplayName("Salário Base")]
         public double BaseSalary { get; set; }
+
         [DisplayName("Departamento")]
         public Department Department { get; set; }
         [DisplayName("Id do Departamento")]

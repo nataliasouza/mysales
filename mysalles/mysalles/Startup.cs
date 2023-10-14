@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using System.Collections.Generic;
 
 namespace mysalles
 {
@@ -33,6 +36,16 @@ namespace mysalles
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)//, SeedingService seedingService)
         {
+            var enUs = new CultureInfo("en-US");
+            var localizationoptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = new List<CultureInfo> { enUs },
+                SupportedUICultures = new List<CultureInfo> { enUs }
+            };
+
+            app.UseRequestLocalization(localizationoptions);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();               
