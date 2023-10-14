@@ -27,6 +27,7 @@ namespace mysalles.Models
         public DateTime BirthDate { get; set; }
 
         [DisplayFormat(DataFormatString ="{0:F2}")]
+        [Range(1320.0, 50000.0, ErrorMessage ="{0} deve ser de {1} até {2}")]
         [DisplayName("Salário Base")]
         public double BaseSalary { get; set; }
 

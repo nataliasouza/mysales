@@ -34,6 +34,20 @@ namespace mysalles.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Seller seller)
+        {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAllDepartments();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+            _sellerService.Insert(seller);
+            return RedirectToAction(nameof(Index));
+        }
+
         //GET
         public IActionResult Edit(int? id)
         {
@@ -62,7 +76,14 @@ namespace mysalles.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
-            if(id != seller.Id)
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAllDepartments();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+
+            if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch!" });
             }
@@ -77,15 +98,7 @@ namespace mysalles.Controllers
                 return RedirectToAction(nameof(Error), new { message = ex.Message });
             }         
            
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Seller seller) 
-        { 
-            _sellerService.Insert(seller);
-            return RedirectToAction(nameof(Index));
-        }
+        }        
 
         public IActionResult Delete(int? id)
         {
