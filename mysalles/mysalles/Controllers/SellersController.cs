@@ -3,7 +3,9 @@ using mysalles.Models;
 using mysalles.Models.ViewModels;
 using mysalles.Services;
 using mysalles.Services.Exceptions;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace mysalles.Controllers
 {
@@ -32,17 +34,18 @@ namespace mysalles.Controllers
             return View(viewModel);
         }
 
+        //GET
         public IActionResult Edit(int? id)
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindByIdSeller(id.Value);
             if(obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             List<Department> departments = _departmentService.FindAllDepartments();
@@ -61,7 +64,7 @@ namespace mysalles.Controllers
         {
             if(id != seller.Id)
             {
-                return BadRequest();
+                return RedirectToAction(nameof(Error), new { message = "Id mismatch!" });
             }
 
             try
@@ -69,14 +72,10 @@ namespace mysalles.Controllers
                 _sellerService.UpdateSeller(seller);
                 return RedirectToAction(nameof(Index));
             }
-            catch (NotFoundException)
+            catch (ApplicationException ex)
             {
-                return NotFound();
-            }
-            catch(DbConcurrencyException ex) 
-            {
-                return BadRequest(ex.Message);
-            }
+                return RedirectToAction(nameof(Error), new { message = ex.Message });
+            }         
            
         }
 
@@ -92,13 +91,13 @@ namespace mysalles.Controllers
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindByIdSeller(id.Value);
             if(obj == null)
             {
-                return NotFound();
+                RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             return View(obj);
@@ -116,16 +115,27 @@ namespace mysalles.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindByIdSeller(id.Value);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             return View(obj);
+        }
+
+        public IActionResult Error(string message) 
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                //Pega o Id interno da requisição
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }

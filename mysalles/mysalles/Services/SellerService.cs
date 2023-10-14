@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Models;
 using mysalles.Services.Exceptions;
