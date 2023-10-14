@@ -2,10 +2,10 @@
 using mysalles.Models;
 using mysalles.Models.ViewModels;
 using mysalles.Services;
-using mysalles.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace mysalles.Controllers
 {
@@ -20,49 +20,49 @@ namespace mysalles.Controllers
             _departmentService = departmentService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var list = _sellerService.FindAllSellers();
+            var list = await _sellerService.FindAllSellersAsync();
             return View(list);
         }
 
         // GET: Sellers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var departments = _departmentService.FindAllDepartments();
+            var departments = await _departmentService.FindAllDepartmentsAsync();
             var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Seller seller)
+        public async Task<IActionResult> Create(Seller seller)
         {
             if (!ModelState.IsValid)
             {
-                var departments = _departmentService.FindAllDepartments();
+                var departments = await _departmentService.FindAllDepartmentsAsync();
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel);
             }
-            _sellerService.Insert(seller);
+            await _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
 
         //GET
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if(id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
-            var obj = _sellerService.FindByIdSeller(id.Value);
+            var obj = await _sellerService.FindByIdSellerAsync(id.Value);
             if(obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
 
-            List<Department> departments = _departmentService.FindAllDepartments();
+            List<Department> departments = await _departmentService.FindAllDepartmentsAsync();
             SellerFormViewModel viewModel = new SellerFormViewModel 
             { 
                 Seller = obj, 
@@ -74,43 +74,42 @@ namespace mysalles.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Seller seller)
+        public async Task<IActionResult> Edit(int id, Seller seller)
         {
             if (!ModelState.IsValid)
             {
-                var departments = _departmentService.FindAllDepartments();
+                var departments = await _departmentService.FindAllDepartmentsAsync();
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel);
             }
 
             if (id != seller.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id mismatch!" });
+                return RedirectToAction(nameof(Error), new { message = "Id não existente, verifique o id do vendedor!" });
             }
 
             try
             {
-                _sellerService.UpdateSeller(seller);
+                await _sellerService.UpdateSellerAsync(seller);
                 return RedirectToAction(nameof(Index));
             }
             catch (ApplicationException ex)
             {
                 return RedirectToAction(nameof(Error), new { message = ex.Message });
-            }         
-           
+            }          
         }        
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if(id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
-            var obj = _sellerService.FindByIdSeller(id.Value);
+            var obj = await _sellerService.FindByIdSellerAsync(id.Value);
             if(obj == null)
             {
-                RedirectToAction(nameof(Error), new { message = "Id not found" });
+                RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
 
             return View(obj);
@@ -118,23 +117,23 @@ namespace mysalles.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _sellerService.RemoveSeller(id);
+            await _sellerService.RemoveSellerAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
-            var obj = _sellerService.FindByIdSeller(id.Value);
+            var obj = await _sellerService.FindByIdSellerAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
 
             return View(obj);

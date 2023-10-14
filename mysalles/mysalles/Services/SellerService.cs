@@ -4,6 +4,7 @@ using mysalles.Models;
 using mysalles.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace mysalles.Services
 {
@@ -16,32 +17,33 @@ namespace mysalles.Services
             _context = context;
         }
 
-        public List<Seller> FindAllSellers()
+        public async Task<List<Seller>>FindAllSellersAsync()
         {
-            return _context.Seller.OrderBy(x => x.Name).ToList();
+            return await _context.Seller.OrderBy(x => x.Name).ToListAsync();
         }
 
-        public void Insert(Seller seller)
+        public async Task Insert(Seller seller)
         {
             _context.Add(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public Seller FindByIdSeller(int id)
+        public async Task<Seller> FindByIdSellerAsync(int id)
         {
-            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(seller => seller.Id == id);
+            return await _context.Seller.Include(obj => obj.Department).FirstOrDefaultAsync(seller => seller.Id == id);
         }
 
-        public void UpdateSeller(Seller seller)
+        public async Task UpdateSellerAsync(Seller seller)
         {
-            if (!_context.Seller.Any(x => x.Id == seller.Id))
+            bool hasAnySeller = await _context.Seller.AnyAsync(x => x.Id == seller.Id);
+            if (!hasAnySeller)
             {
-                throw new NotFoundException("Id not found");
+                throw new NotFoundException("Id não encontrado");
             }
             try
             {
                 _context.Update(seller);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbConcurrencyException ex)
             {
@@ -49,11 +51,11 @@ namespace mysalles.Services
             }
         }
 
-        public void RemoveSeller(int id)
+        public async Task RemoveSellerAsync(int id)
         {
-            var seller = _context.Seller.Find(id);
+            var seller = await _context.Seller.FindAsync(id);
             _context.Seller.Remove(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }      
     }
 }

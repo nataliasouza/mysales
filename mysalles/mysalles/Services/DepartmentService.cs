@@ -1,7 +1,9 @@
-﻿using mysalles.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using mysalles.Data;
 using mysalles.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace mysalles.Services
 {
@@ -14,9 +16,9 @@ namespace mysalles.Services
             _context = context;
         }
 
-        public List<Department> FindAllDepartments()
+        public async Task<List<Department>> FindAllDepartmentsAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

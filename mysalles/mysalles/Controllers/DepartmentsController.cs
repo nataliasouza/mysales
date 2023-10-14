@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Models;
+using mysalles.Models.ViewModels;
 
 namespace mysalles.Controllers
 {
@@ -20,24 +23,6 @@ namespace mysalles.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Department.ToListAsync());
-        }
-
-        // GET: Departments/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var department = await _context.Department
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
-            {
-                return NotFound();
-            }
-
-            return View(department);
         }
 
         // GET: Departments/Create
@@ -67,13 +52,13 @@ namespace mysalles.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
             var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
             return View(department);
         }
@@ -87,7 +72,7 @@ namespace mysalles.Controllers
         {
             if (id != department.Id)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
 
             if (ModelState.IsValid)
@@ -101,11 +86,11 @@ namespace mysalles.Controllers
                 {
                     if (!DepartmentExists(department.Id))
                     {
-                        return NotFound();
+                        return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
                     }
                     else
                     {
-                        throw;
+                        throw new Exception("Erro: Id do departamento não encontrado ");
                     }
                 }
                 return RedirectToAction(nameof(Index));
@@ -118,14 +103,14 @@ namespace mysalles.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return NotFound();
+                RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
             }
 
             return View(department);
@@ -145,6 +130,34 @@ namespace mysalles.Controllers
         private bool DepartmentExists(int id)
         {
             return _context.Department.Any(e => e.Id == id);
+        }
+
+        // GET: Departments/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
+            }
+
+            var department = await _context.Department
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (department == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+            }
+
+            return View(department);
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,                
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
