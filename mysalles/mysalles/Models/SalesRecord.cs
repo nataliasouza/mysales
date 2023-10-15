@@ -14,6 +14,7 @@ namespace mysalles.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
+        [DisplayFormat(DataFormatString ="{0:F2}")]
         [DisplayName("Valor")]
         public double Amount { get; set; }
 

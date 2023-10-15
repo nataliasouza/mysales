@@ -125,7 +125,7 @@ namespace mysalles.Controllers
                 await _sellerService.RemoveSellerAsync(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch(IntegrityException ex)
+            catch(IntegrityException)
             {
                 return RedirectToAction(nameof(Error), 
                     new { message = "Este vendedor(a) possui vendas realizadas e " +
