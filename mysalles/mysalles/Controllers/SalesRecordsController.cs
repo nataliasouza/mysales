@@ -30,8 +30,8 @@ namespace mysalles.Controllers
                 maxDate = DateTime.Now;
             }
 
-            ViewData[nameof(minDate)] = minDate.Value.ToString("dd/MM/yyyy");
-            ViewData[nameof(maxDate)] = maxDate.Value.ToString("dd/MM/yyyy");
+            ViewData[nameof(minDate)] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData[nameof(maxDate)] = maxDate.Value.ToString("yyyy-MM-dd"); 
 
             var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
             return View(result);
