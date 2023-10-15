@@ -2,6 +2,7 @@
 using mysalles.Models;
 using mysalles.Models.ViewModels;
 using mysalles.Services;
+using mysalles.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -119,8 +120,17 @@ namespace mysalles.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            await _sellerService.RemoveSellerAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _sellerService.RemoveSellerAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(IntegrityException ex)
+            {
+                return RedirectToAction(nameof(Error), 
+                    new { message = "Este vendedor(a) possui vendas realizadas e " +
+                    "não pode ser deletado(a)"});
+            }
         }
 
         public async Task<IActionResult> Details(int? id)

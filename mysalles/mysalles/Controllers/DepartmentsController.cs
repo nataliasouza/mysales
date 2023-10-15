@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using mysalles.Data;
 using mysalles.Models;
 using mysalles.Models.ViewModels;
+using mysalles.Services.Exceptions;
 
 namespace mysalles.Controllers
 {
@@ -90,7 +91,7 @@ namespace mysalles.Controllers
                     }
                     else
                     {
-                        throw new Exception("Erro: Id do departamento não encontrado ");
+                        throw new NotFoundException("Erro: Id do departamento não encontrado ");
                     }
                 }
                 return RedirectToAction(nameof(Index));

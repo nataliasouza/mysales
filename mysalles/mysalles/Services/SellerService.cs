@@ -53,9 +53,16 @@ namespace mysalles.Services
 
         public async Task RemoveSellerAsync(int id)
         {
-            var seller = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(seller);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var seller = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(seller);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException ex) 
+            {
+                throw new IntegrityException(ex.Message);
+            }
         }      
     }
 }
