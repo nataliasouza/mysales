@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace mysalles.Models
+namespace mySales.Models
 {
     public class Department
     {

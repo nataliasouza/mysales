@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace mysalles.Models.ViewModels
+namespace mySales.Models.ViewModels
 {
     public class SellerFormViewModel
     {

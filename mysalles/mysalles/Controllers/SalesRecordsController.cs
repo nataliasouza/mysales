@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mysalles.Services;
+using mySales.Services;
 using System;
 using System.Threading.Tasks;
 
-namespace mysalles.Controllers
+namespace mySales.Controllers
 {
     public class SalesRecordsController : Controller
     {

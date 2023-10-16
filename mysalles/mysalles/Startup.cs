@@ -4,13 +4,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using mysalles.Data;
-using mysalles.Services;
+using mySales.Data;
+using mySales.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using System.Collections.Generic;
 
-namespace mysalles
+namespace mySales
 {
     public class Startup
     {

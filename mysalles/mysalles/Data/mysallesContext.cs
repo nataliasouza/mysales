@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using mysalles.Models;
+using mySales.Models;
 
-namespace mysalles.Data
+namespace mySales.Data
 {
     public class MySallesContext : DbContext
     {

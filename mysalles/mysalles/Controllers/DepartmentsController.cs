@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using mysalles.Data;
-using mysalles.Models;
-using mysalles.Models.ViewModels;
-using mysalles.Services.Exceptions;
+using mySales.Data;
+using mySales.Models;
+using mySales.Models.ViewModels;
+using mySales.Services.Exceptions;
 
-namespace mysalles.Controllers
+namespace mySales.Controllers
 {
     public class DepartmentsController : Controller
     {

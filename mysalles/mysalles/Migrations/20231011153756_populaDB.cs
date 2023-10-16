@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace mysalles.Migrations
+namespace mySales.Migrations
 {
     public partial class populaDB : Migration
     {

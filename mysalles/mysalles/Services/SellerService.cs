@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using mysalles.Data;
-using mysalles.Models;
-using mysalles.Services.Exceptions;
+using mySales.Data;
+using mySales.Models;
+using mySales.Services.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace mysalles.Services
+namespace mySales.Services
 {
     public class SellerService
     {

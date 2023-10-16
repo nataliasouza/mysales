@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mysalles.Services.Exceptions
+namespace mySales.Services.Exceptions
 {
     public class IntegrityException : ApplicationException
     {

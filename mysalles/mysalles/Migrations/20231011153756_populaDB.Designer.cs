@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using mysalles.Data;
+using mySales.Data;
 
-namespace mysalles.Migrations
+namespace mySales.Migrations
 {
     [DbContext(typeof(MySallesContext))]
     [Migration("20231011153756_populaDB")]
@@ -21,7 +21,7 @@ namespace mysalles.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("mysalles.Models.Department", b =>
+            modelBuilder.Entity("mySales.Models.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace mysalles.Migrations
                     b.ToTable("Department");
                 });
 
-            modelBuilder.Entity("mysalles.Models.SalesRecord", b =>
+            modelBuilder.Entity("mySales.Models.SalesRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace mysalles.Migrations
                     b.ToTable("SalesRecord");
                 });
 
-            modelBuilder.Entity("mysalles.Models.Seller", b =>
+            modelBuilder.Entity("mySales.Models.Seller", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,30 +91,30 @@ namespace mysalles.Migrations
                     b.ToTable("Seller");
                 });
 
-            modelBuilder.Entity("mysalles.Models.SalesRecord", b =>
+            modelBuilder.Entity("mySales.Models.SalesRecord", b =>
                 {
-                    b.HasOne("mysalles.Models.Seller", "Seller")
+                    b.HasOne("mySales.Models.Seller", "Seller")
                         .WithMany("Sales")
                         .HasForeignKey("SellerId");
 
                     b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("mysalles.Models.Seller", b =>
+            modelBuilder.Entity("mySales.Models.Seller", b =>
                 {
-                    b.HasOne("mysalles.Models.Department", "Department")
+                    b.HasOne("mySales.Models.Department", "Department")
                         .WithMany("Sellers")
                         .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("mysalles.Models.Department", b =>
+            modelBuilder.Entity("mySales.Models.Department", b =>
                 {
                     b.Navigation("Sellers");
                 });
 
-            modelBuilder.Entity("mysalles.Models.Seller", b =>
+            modelBuilder.Entity("mySales.Models.Seller", b =>
                 {
                     b.Navigation("Sales");
                 });

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace mysalles.Models
+namespace mySales.Models
 {
     public class Seller
     {

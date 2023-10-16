@@ -1,12 +1,12 @@
-﻿using mysalles.Data;
-using mysalles.Models;
+﻿using mySales.Data;
+using mySales.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace mysalles.Services
+namespace mySales.Services
 {
     public class SalesRecordService
     {

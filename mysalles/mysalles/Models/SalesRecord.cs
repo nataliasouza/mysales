@@ -1,9 +1,9 @@
-﻿using mysalles.Models.Enums;
+﻿using mySales.Models.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace mysalles.Models
+namespace mySales.Models
 {
     public class SalesRecord
     {

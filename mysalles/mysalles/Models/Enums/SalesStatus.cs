@@ -1,5 +1,5 @@
 ﻿
-namespace mysalles.Models.Enums
+namespace mySales.Models.Enums
 {
     public enum SalesStatus : int
     {

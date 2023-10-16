@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mysalles.Models;
-using mysalles.Models.ViewModels;
-using mysalles.Services;
-using mysalles.Services.Exceptions;
+using mySales.Models;
+using mySales.Models.ViewModels;
+using mySales.Services;
+using mySales.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace mysalles.Controllers
+namespace mySales.Controllers
 {
     public class SellersController : Controller
     {
