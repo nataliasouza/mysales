@@ -9,32 +9,35 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">mysales</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container">                
+                <a class="navbar-brand text-dark href=" #"" asp-area="" asp-controller="Home" asp-action="Index">mysales</a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse ">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Departments" asp-action="Index">Departamento</a>
+                            <a class="nav-link" asp-area="" asp-controller="Departments" asp-action="Index">Departamento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sellers" asp-action="Index">Vendedores</a>
+                            <a class="nav-link" asp-area="" asp-controller="Sellers" asp-action="Index">Vendedores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="SalesRecords" asp-action="Index">Vendas</a>
+                            <a class="nav-link" asp-area="" asp-controller="SalesRecords" asp-action="Index">Vendas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Contato</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Leia-me</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Leia-me</a>
                         </li>
                     </ul>
                 </div>
