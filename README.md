@@ -4,13 +4,37 @@
 
 ⚠️Este READ-ME está em construção⚠️<br>
 
-##### DESCRIÇÃO:
-> Projeto Final do Curso C# Completo - Programação Orientada a Objetos + Projetos - Parte 03
+#### DESCRIÇÃO:
+>*Projeto Final do Curso C# Completo - Programação Orientada a Objetos + Projetos - Parte 03.*
 
+###### Link do curso:
 ```bash
 https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/
 ```
-<br>
+<br><hr>
+
+```diff
+- ATENÇÃO PARA AS MODIFICAÇÕES NÃO CONTIDAS NO CURSO
+
+ 1 - No curso a versão do dotnet é 2.1, este projeto está na 5.0.
+
+ 2 - Foi utilizado o SQL Server no lugar do MySql.
+
+ 3 - Não utilizei a class Seeding Service [aula 261] que é demostrada no curso, optei por usar os métodos (Up e Down)
+do migration builder para popular o banco e ou desfazer este processo. Observe a migration de nome populaDB,
+nela contém os comandos SQL para a criação dos dados que estarão no banco de dados inicial.
+```
+Links dos conteúdos:
+
+###### EF Core 2.1 - Populando o BD via Migrations - Macoratti
+```bash
+https://www.youtube.com/watch?v=CM_pw4aO4To
+```
+###### Para saber + sobre Connection Strings no Sql Server - Balta.io
+```bash
+(https://www.youtube.com/watch?v=CM_pw4aO4To)
+```
+<br> <hr>
 
 ## <i> Detalhamento das atividades: </i>
 <br>
@@ -47,13 +71,13 @@ https://github.com/nataliasouza/mysalles
 ```
 <br>
 </details>
-<br>
+<br> <hr>
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-* Você precisará de:  `<C# - ASP .NET Core MVC - .NET5 / SQL Server - E.F. Core - Bootstrap 4>`
+* Você precisará de:  `<C# - ASP .NET Core MVC - .NET 5.0 / SQL Server - E.F. Core - Bootstrap 4>`
 <br>
 
 * Pacotes e versões: `<Microsoft.EntityFrameworkCore>` 
