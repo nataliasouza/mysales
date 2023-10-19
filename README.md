@@ -11,6 +11,17 @@
 ```bash
 https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/
 ```
+###### DEMO: 
+<details>
+  <summary> <b> Demo da aplicação atual (branch: master) - Vídeo </b> <i>(clique na setinha!)</i></summary><br>
+
+ Contribua :)
+ 
+https://github.com/nataliasouza/mysales/assets/13735095/7470fd9f-b8ab-4845-834d-1bf995d254e3
+
+</details>
+
+
 <br><hr>
 
 ```diff
