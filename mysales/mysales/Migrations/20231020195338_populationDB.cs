@@ -63,5 +63,3 @@ namespace mySales.Migrations
         }
     }
 }
-
-
