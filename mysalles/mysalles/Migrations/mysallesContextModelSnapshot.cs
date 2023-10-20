@@ -8,7 +8,7 @@ using mySales.Data;
 
 namespace mySales.Migrations
 {
-    [DbContext(typeof(MySallesContext))]
+    [DbContext(typeof(MySalesContext))]
     partial class MySallesContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -77,10 +77,13 @@ namespace mySales.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.HasKey("Id");
 
