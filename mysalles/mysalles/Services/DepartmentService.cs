@@ -9,9 +9,9 @@ namespace mySales.Services
 {
     public class DepartmentService
     {
-        private readonly MySallesContext _context;
+        private readonly MySalesContext _context;
 
-        public DepartmentService(MySallesContext context)
+        public DepartmentService(MySalesContext context)
         {
             _context = context;
         }

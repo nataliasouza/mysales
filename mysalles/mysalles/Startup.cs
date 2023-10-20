@@ -26,8 +26,8 @@ namespace mySales
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<MySallesContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MySallesContext")));
+            services.AddDbContext<MySalesContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MySalesContext")));
 
             services.AddScoped<SellerService>();
             services.AddScoped<DepartmentService>();

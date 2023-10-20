@@ -13,9 +13,9 @@ namespace mySales.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private readonly MySallesContext _context;
+        private readonly MySalesContext _context;
 
-        public DepartmentsController(MySallesContext context)
+        public DepartmentsController(MySalesContext context)
         {
             _context = context;
         }
