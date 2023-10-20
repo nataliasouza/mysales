@@ -9,7 +9,7 @@ using mySales.Data;
 namespace mySales.Migrations
 {
     [DbContext(typeof(MySalesContext))]
-    partial class MySallesContextModelSnapshot : ModelSnapshot
+    partial class MySalesContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

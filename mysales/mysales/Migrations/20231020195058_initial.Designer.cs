@@ -10,8 +10,8 @@ using mySales.Data;
 namespace mySales.Migrations
 {
     [DbContext(typeof(MySalesContext))]
-    [Migration("20231019023317_inicial")]
-    partial class inicial
+    [Migration("20231020195058_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

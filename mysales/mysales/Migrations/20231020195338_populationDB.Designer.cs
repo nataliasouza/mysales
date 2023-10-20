@@ -10,7 +10,7 @@ using mySales.Data;
 namespace mySales.Migrations
 {
     [DbContext(typeof(MySalesContext))]
-    [Migration("20231019034622_populationDB")]
+    [Migration("20231020195338_populationDB")]
     partial class populationDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
