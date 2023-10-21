@@ -27,15 +27,18 @@ namespace mySales
             services.AddControllersWithViews();
 
             services.AddDbContext<MySalesContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MySalesContext")));
+                    options.UseMySql(Configuration.GetConnectionString("MySalesContext"),
+                    ServerVersion.Parse("8.0.30-mysql"), builder
+                    => builder.MigrationsAssembly("mySales")));
 
             services.AddScoped<SellerService>();
+            services.AddScoped<SeedingService>();
             services.AddScoped<DepartmentService>();
             services.AddScoped<SalesRecordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)//, SeedingService seedingService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             var enUs = new CultureInfo("en-US");
             var localizationoptions = new RequestLocalizationOptions
