@@ -27,7 +27,7 @@ https://github.com/nataliasouza/mysales/assets/13735095/7470fd9f-b8ab-4845-834d-
  1 - No curso a versão do dotnet é 2.1, este projeto está na 5.0.
 
  2 - Na branch master, foi utilizado o MySql e a Class SeedingService (Conforme demostrado
-no curso. Detalhes podem ser vistos na branch master e versaocurso-mysql-seedingService-dotnet5.
+no curso). Detalhes podem ser vistos na branch master e versaocurso-mysql-seedingService-dotnet5.
 
  3 - Na branch minhaversao-sqlserver-dotnet5, não utilizei a class Seeding Service [aula 261]
 que é demostrada no curso, optei por usar os métodos (Up e Down) do migration builder para popular
