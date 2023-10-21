@@ -35,7 +35,7 @@ o banco e ou desfazer este processo.
 Observe a migration de nome populationDB, nela contém os comandos SQL para a criação dos dados
 que estarão no banco de dados inicial.
 ```
-Links dos conteúdos:
+Links dos conteúdos (minhaversao-sqlserver-dotnet5):
 
 ###### EF Core 2.1 - Populando o BD via Migrations - Macoratti
 ```bash
@@ -88,13 +88,30 @@ https://github.com/nataliasouza/mysalles
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
+> ⚠️ Atenção para qual versão das branchs você irá utilizar. ⚠️
+<br>
+
+**Branch: versaocurso-mysql-seedingService-dotnet5** <br>
+
+* Você precisará de:  `<C# - ASP .NET Core MVC - .NET 5.0 / MySQL - E.F. Core - Bootstrap 4>`
+<br>
+
+* Pacotes e versões: `<Microsoft.EntityFrameworkCore> Version="5.0.17"` 
+                     `<Pomelo.EntityFrameworkCore.MySql> Version="5.0.4"`
+                     `<Microsoft.EntityFrameworkCore.Tools> Version="5.0.17"`
+                     `<Microsoft.EntityFrameworkCore.CodeGeneration.Design> Version="5.0.2`
+  
+<hr>
+
+**Branch: minhaversao-sqlserver-dotnet5** <br>
+
 * Você precisará de:  `<C# - ASP .NET Core MVC - .NET 5.0 / SQL Server - E.F. Core - Bootstrap 4>`
 <br>
 
-* Pacotes e versões: `<Microsoft.EntityFrameworkCore>` 
-                     `<Microsoft.EntityFrameworkCore.SqlServer>`
-                     `<Microsoft.EntityFrameworkCore.Tools>`
-                     `<Microsoft.EntityFrameworkCore.CodeGeneration.Design>`
+* Pacotes e versões: `<Microsoft.EntityFrameworkCore> Version="5.0.17"` 
+                     `<Microsoft.EntityFrameworkCore.SqlServer> Version="5.0.17"`
+                     `<Microsoft.EntityFrameworkCore.Tools> Version="5.0.17"`
+                     `<Microsoft.EntityFrameworkCore.CodeGeneration.Design> Version="5.0.2"`
 
 <br> <hr>
 
